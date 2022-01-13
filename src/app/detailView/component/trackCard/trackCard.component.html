@@ -1,0 +1,9 @@
+<ion-card>
+  <ion-img [src]="track.image"></ion-img>
+  <ion-card-header class="trackCard">
+    <ion-card-title>{{ track.title }}</ion-card-title>
+    <ion-card-subtitle
+      >Play number: {{ track.playsCount | number }}</ion-card-subtitle
+    >
+  </ion-card-header>
+</ion-card>

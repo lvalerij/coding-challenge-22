@@ -1,0 +1,35 @@
+<ion-content>
+  <app-menu></app-menu>
+  <ion-grid>
+    <ion-row>
+      <ion-searchbar
+        (ionChange)="onSearchArtist($event)"
+        (ionCancel)="onCancelSearch()"
+      ></ion-searchbar>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Choose country</ion-label>
+          <ion-select
+            [value]="countries[0]"
+            okText="Select"
+            cancelText="Dismiss"
+            (ionChange)="onCountrySelect($event)"
+          >
+            <ion-select-option *ngFor="let country of countries">{{
+              country
+            }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ng-container *ngIf="!isLoading">
+        <ion-col sizeMd="3" sizeXs="6" *ngFor="let artist of filteredArtists">
+          <app-artist-card [artist]="artist"></app-artist-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>

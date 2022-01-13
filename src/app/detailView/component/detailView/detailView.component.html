@@ -1,0 +1,52 @@
+<!--
+name: string;
+image: string;
+listenersAmount: number;
+playsAmount: number;
+topTracks: Track[];
+topAlbums: Album[];
+-->
+<ion-content>
+  <app-menu></app-menu>
+  <ion-grid>
+    <ng-container *ngIf="!isLoading">
+      <ion-row class="ion-padding">
+        <ion-col style="text-align: center">
+          <img [src]="detailArtist.image" />
+          <h1>{{ detailArtist.name }}</h1>
+          <h3>Amount of listeners: {{ detailArtist.listeners | number }}</h3>
+          <h3>Amount of plays: {{ detailArtist.playCount | number }}</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h1 style="text-align: center">Top 5 Tracks</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding">
+        <ion-col
+          sizeMd="3"
+          sizeXs="6"
+          *ngFor="let track of detailArtist.topTracks"
+        >
+          <app-track-card [track]="track"></app-track-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h1 style="text-align: center">Top 5 Albums</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding">
+        <ion-col
+          sizeMd="3"
+          sizeXs="6"
+          *ngFor="let album of detailArtist.topAlbums"
+        >
+          <app-album-card [album]="album"></app-album-card>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+</ion-content>
